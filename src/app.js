@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const { getRoutes } = require("./routes");
 
 async function configureApp(pool) {
   console.log("Entering configuration");
@@ -13,13 +14,14 @@ async function configureApp(pool) {
   });
 
   app.set("db", pool);
-  // 3. Create a route
-  app.get("/", (req, res) => {
-    res.send("You are in your home page!");
-  });
+  //FIXME:
+  //   !app.get("/", (req, res) => {
+  //     res.send("API Works!");
+  //   });
+  getRoutes(app);
 
-  app.listen(3001, function () {
-    console.log("Connecting to DB");
+  app.listen(3000, function () {
+    console.log("Listening to port 3000");
   });
   console.log("Exiting configuration.");
   return app;
