@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
-
+require("dotenv").config();
 async function connectToDB() {
-  const sequelize = new Sequelize("sad1", "root", "123456", {
+  const sequelize = new Sequelize("db_sad2", "root", "123456", {
     host: "localhost",
     dialect: "mysql",
   });

@@ -1,6 +1,6 @@
 const { configureApp } = require("./app");
 const { getParams } = require("./lib/DBParams");
-const { connectToDB } = require("./lib/connectToDB");
+const { connectToDB } = require("./lib/DBConnect");
 
 let pool;
 let params;
