@@ -16,6 +16,8 @@ const arr = [
   },
 ];
 
+
+
 function check(req, res) {
   var { params } = req.params;
   console.log(params);
@@ -34,6 +36,28 @@ function postMessage(req, res) {
   return res.json({
     mesage: body.message,
   });
+}
+
+function insertUser(reg,res){
+  let body = req.body
+  const {username,password,email}=body
+  try {
+    const user=DBModel.createUsers({
+      username: username,
+      password:password,
+      email:email
+    })
+
+    res.json({
+      user: user,
+      result: body,
+      message: "successful"
+    })
+  }catch(error){
+    res.json({
+      errorMessage: error
+    })
+  }
 }
 
 exports.check = check;
