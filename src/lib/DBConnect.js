@@ -10,8 +10,8 @@ async function connectToDB() {
   const Post = require("../model/Post")(sequelize);
   const Comment = require("../model/Comment")(sequelize);
 
-  User.hasMany(Post); // A user can have many posts
-  Post.belongsTo(User); // A post belongs to a user
+  User.hasMany(Post, { foreignKey: "userID" }); // A user can have many posts
+  Post.belongsTo(User, { foreignKey: "userID" }); // A post belongs to a user
   User.hasMany(Comment); // A user can have many comments
   Comment.belongsTo(User); //A comment belongs to a user
   Post.hasMany(Comment); // A post can have many comments

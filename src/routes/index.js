@@ -4,6 +4,7 @@ const {
   findUserID,
   updateUser,
   addPost,
+  getPostByUser,
 } = require("./crudRoutes");
 
 function getRoutes(app) {

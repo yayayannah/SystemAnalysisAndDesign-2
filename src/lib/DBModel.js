@@ -6,6 +6,7 @@ const sequelize = new Sequelize("tbl_test", "root", "123456", {
 
 const User = require("../model/User")(sequelize);
 const Post = require("../model/Post")(sequelize);
+const Comment = require("../model/Comment")(sequelize);
 
 function createUsers(req, res) {
   const body = req.body;
@@ -15,8 +16,6 @@ function createUsers(req, res) {
       username: username,
       email: email,
     }).then((newUser) => {
-      const insertedUserId = newUser.id;
-      console.log("Inserted User ID:", insertedUserId);
       res.json({
         user: newUser.toJSON(),
       });
@@ -68,7 +67,7 @@ function updatedUser(req, res) {
     { username, email },
     {
       where: {
-        id: id,
+        userID: id,
       },
     }
   )
@@ -100,7 +99,6 @@ function createPost(req, res) {
       content: content,
       userID: userID,
     }).then((user) => {
-      const updatedUserID = newUser.id;
       res.json({
         user: user.toJSON(),
       });
